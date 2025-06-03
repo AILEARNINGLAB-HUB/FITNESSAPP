@@ -1,0 +1,47 @@
+# AI-Powered Adaptive Training Coach: Iteration 2 Plan
+
+## 1. Introduction
+
+This document outlines the plan for Iteration 2 of the AI-Powered Adaptive Training Coach. It builds upon the deployed Minimum Viable Product (MVP), incorporating anticipated user feedback, addressing known limitations from the MVP scope, and strategically expanding features based on the original user stories. The aim is to enhance user engagement, improve learning efficacy, and broaden the platform's utility.
+
+## 2. Key Goals for Iteration 2
+
+*   **Enhance Personalization & Adaptation:** Move beyond basic recommendations and rule-based adaptation by incorporating user feedback and refining algorithms.
+*   **Expand Content Offerings & Types:** Increase the volume and variety of available training materials to cater to more users and learning styles.
+*   **Introduce Foundational Role-Based Tools:** Begin to lay the groundwork for Trainer roles by providing basic content management capabilities.
+*   **Improve Learner Engagement:** Add more sophisticated gamification and clearer progress visualization, including skill tracking.
+*   **Address MVP Usability & Performance:** Act on user feedback regarding bugs, usability issues, and performance bottlenecks identified in Iteration 1 (MVP).
+
+## 3. Prioritized Feature List for Iteration 2
+
+| Feature Name                                      | Description                                                                                                                                                              | Related User Story IDs                                     | Anticipated Benefit                                                                        | High-Level Technical Considerations                                                                                                                                                                                             |
+|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|--------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **1. Expanded Course Content & New Content Type** | Add a significant number of new courses in existing and new subject areas. Introduce one new interactive content type (e.g., fill-in-the-blanks, or simple scenario-based questions within lessons). | USL002, (Addresses "Need more courses" feedback)           | Wider user appeal, richer learning experience, caters to different learning preferences.     | Content creation/curation pipeline, potential new DB fields for `Lesson.content_data`, new frontend rendering components for the interactive type.                                                                     |
+| **2. User Feedback on Recommendations**           | Allow users to provide feedback on course recommendations (e.g., "Not interested," "Already know this," "Useful"). Use this feedback to refine future recommendations.       | USL002 (enhancement), (Addresses "Recommendations okay, but..." feedback) | More relevant and personalized course suggestions, improved user satisfaction.             | Backend: New DB table for recommendation feedback. AI: Modify personalization engine to incorporate negative/positive feedback (e.g., adjust similarity scores, exclude items). Frontend: UI elements for feedback on course cards. |
+| **3. Granular Skill Tracking (V1)**               | Users can view a list of skills associated with courses they've completed or made significant progress in. Skills are mapped from course tags and potentially quiz performance. | USL006, (Addresses "Track skills more granularly" feedback) | Clearer visibility of skill development, enhanced motivation, better understanding of learning outcomes. | Backend: Define skill taxonomy, map skills to courses/modules/lessons. Logic to award/track skills based on user progress. New API endpoints. Frontend: New "My Skills" section in user profile or progress page.              |
+| **4. Enhanced Gamification: Streaks & More Badges**| Introduce daily/weekly activity streaks. Add a new set of badges for completing specific course combinations, achieving streaks, or mastering a certain number of skills.      | USL008, (Addresses "Gamification basic" feedback)          | Increased user engagement and motivation, encourages consistent platform use.              | Backend: Logic for tracking streaks, defining new badge criteria and awarding them. New DB tables for streaks. Frontend: UI elements to display streaks and new badges.                                                        |
+| **5. Basic Trainer Role: Course & Quiz Creation** | Introduce a "Trainer" role. Trainers can create new courses, define modules/lessons (text-based initially), and create simple quizzes (multiple-choice) via a basic admin interface. | UST001 (partially)                                         | Enables content scaling through user-generated (trainer-vetted) content, supports subject matter experts. | Backend: Role-based access control, new APIs for CRUD operations on courses/lessons/quizzes by trainers. Frontend: Separate admin/trainer views/forms for content creation.                                                 |
+| **6. Refined Adaptive Engine Logic**              | Enhance the `AdaptiveEngineMVP` to consider not just quiz score, but also user's historical performance on similar topics or confidence ratings (if collected) for suggesting next steps. (Still rule-based but more inputs). | USL004 (enhancement), (Addresses "Adaptive difficulty changes..." feedback) | More nuanced and appropriate content adaptation, better learning flow.                       | AI: Modify `AdaptiveEngine` to accept more parameters. Backend: Store additional performance metrics, pass them to the engine.                                                                                              |
+| **7. User Goal Refinement**                       | Allow users to add, modify, or remove their learning goals after onboarding. Recommendations should update based on these changes.                                            | USL007, (Addresses "Want to set more specific goals" feedback) | More adaptive and relevant long-term learning paths.                                       | Backend: CRUD APIs for user goals. Personalization engine needs to be re-triggered or updated when goals change. Frontend: UI for managing goals in user profile.                                                            |
+| **8. Performance & Usability Improvements**       | Address top 3-5 critical/major bugs and usability issues reported from MVP user feedback. Optimize database queries or frontend rendering for any identified performance bottlenecks. | (Addresses "Bugs/Usability" feedback)                      | Improved user satisfaction, more stable and performant platform.                           | Backend/Frontend: Debugging, code refactoring, query optimization, potential UI redesign for specific components.                                                                                                             |
+
+## 4. Addressing Anticipated Feedback
+
+The features prioritized for Iteration 2 directly address much of the simulated MVP feedback:
+
+*   **Content Needs:** "Expanded Course Content & New Content Type" aims to solve the demand for more and varied learning materials.
+*   **Personalization Control:** "User Feedback on Recommendations" and "User Goal Refinement" give users more agency over the personalization. "Refined Adaptive Engine Logic" aims to make progression smoother.
+*   **Feature Requests:** "Granular Skill Tracking (V1)" and "Enhanced Gamification" add more depth to the learner experience.
+*   **Role-Based Needs:** "Basic Trainer Role: Course & Quiz Creation" starts to address the needs of content creators, which can indirectly benefit learners by increasing content availability. Manager dashboards and a dedicated mobile app are larger undertakings likely for Iteration 3 or later.
+*   **Bugs/Usability:** "Performance & Usability Improvements" is a dedicated item to ensure the platform remains robust and user-friendly.
+
+## 5. Next Steps
+
+*   **Detailed Design:** Create detailed technical specifications and UI/UX mockups for each prioritized feature in Iteration 2.
+*   **Backlog Grooming:** Break down these features into smaller, manageable user stories and tasks for the development sprints.
+*   **Resource Allocation:** Assign development resources to tasks.
+*   **Development Sprints:** Begin development of Iteration 2 features.
+*   **Continuous Testing:** Integrate testing throughout the development process for new features.
+*   **User Feedback Collection:** Plan for continuous feedback collection during and after the rollout of Iteration 2.
+
+This Iteration 2 Plan aims to build significantly on the MVP's foundation, making the AI-Powered Adaptive Training Coach more valuable, engaging, and robust for its users.

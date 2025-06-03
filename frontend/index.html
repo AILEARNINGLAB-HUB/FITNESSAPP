@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Adaptive Training Coach</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>AI Adaptive Training Coach</h1>
+    </header>
+
+    <nav id="main-nav" class="hidden">
+        <ul>
+            <li><a href="#dashboard" data-page="dashboard">Dashboard</a></li>
+            <li><a href="#courses" data-page="courses">Browse Courses (Placeholder)</a></li>
+            <li><a href="#progress" data-page="my_progress">My Progress</a></li>
+            <li><a href="#profile" data-page="profile">Profile (Placeholder)</a></li>
+            <li><a href="#" id="logout-link">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main id="app-content" class="container">
+        <!-- Content will be loaded here by JavaScript -->
+        <p>Loading...</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 AI Adaptive Training Coach</p>
+    </footer>
+
+    <!-- Page templates (hidden by default, loaded by JS) -->
+    <template id="login-template">
+        <section id="login-page">
+            <h2>Login</h2>
+            <form id="login-form">
+                <div>
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div>
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit">Login</button>
+                <p class="error-message" id="login-error"></p>
+            </form>
+            <p>Don't have an account? <a href="#register" data-page="register">Register here</a></p>
+        </section>
+    </template>
+
+    <template id="register-template">
+        <section id="register-page">
+            <h2>Register</h2>
+            <form id="register-form">
+                <div>
+                    <label for="register-firstname">First Name:</label>
+                    <input type="text" id="register-firstname" required>
+                </div>
+                <div>
+                    <label for="register-lastname">Last Name:</label>
+                    <input type="text" id="register-lastname" required>
+                </div>
+                <div>
+                    <label for="register-email">Email:</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div>
+                    <label for="register-password">Password:</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <button type="submit">Register</button>
+                <p class="error-message" id="register-error"></p>
+            </form>
+            <p>Already have an account? <a href="#login" data-page="login">Login here</a></p>
+        </section>
+    </template>
+
+    <template id="onboarding-template">
+        <section id="onboarding-page">
+            <h2>Welcome! Let's set up your profile.</h2>
+            <form id="onboarding-form">
+                <p>What are your initial learning interests? (Select 1-2)</p>
+                <div id="onboarding-interests-list">
+                    <!-- Interests will be populated by JS or hardcoded for MVP -->
+                    <div><input type="checkbox" id="interest1" name="interest" value="Python Programming"><label for="interest1">Python Programming</label></div>
+                    <div><input type="checkbox" id="interest2" name="interest" value="Data Analysis"><label for="interest2">Data Analysis</label></div>
+                    <div><input type="checkbox" id="interest3" name="interest" value="Communication Skills"><label for="interest3">Communication Skills</label></div>
+                    <div><input type="checkbox" id="interest4" name="interest" value="Project Management"><label for="interest4">Project Management</label></div>
+                </div>
+                <button type="submit">Complete Setup</button>
+            </form>
+        </section>
+    </template>
+
+    <template id="dashboard-template">
+        <section id="dashboard-page">
+            <h2>Dashboard</h2>
+            <div id="recommended-courses">
+                <h3>Recommended Courses</h3>
+                <div id="recommended-list" class="item-list">
+                    <!-- Recommended courses will be rendered here by ui_render.js -->
+                    <p>Loading recommendations...</p>
+                </div>
+            </div>
+            <div id="my-learning">
+                <h3>My Learning (In Progress)</h3>
+                <div id="mylearning-list" class="item-list">
+                    <!-- In-progress courses will be rendered here -->
+                    <p>No courses in progress.</p>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="course-detail-template">
+        <section id="course-detail-page">
+            <h2 id="course-detail-title">Course Title</h2>
+            <p id="course-detail-description">Course description...</p>
+            <button id="start-resume-course-btn">Start Course</button>
+            <h3>Modules & Lessons</h3>
+            <div id="course-modules-list">
+                <!-- Modules and lessons will be rendered here -->
+            </div>
+        </section>
+    </template>
+
+    <template id="lesson-view-template">
+        <section id="lesson-view-page">
+            <h2 id="lesson-title">Lesson Title</h2>
+            <div id="lesson-content-area">
+                <p>Lesson content (text, video placeholder) goes here...</p>
+            </div>
+            <button id="prev-lesson-btn" class="secondary">Previous Lesson</button>
+            <button id="next-lesson-btn-or-quiz">Next (Placeholder)</button>
+        </section>
+    </template>
+
+    <template id="quiz-view-template">
+        <section id="quiz-view-page">
+            <h2 id="quiz-title">Quiz Title</h2>
+            <p id="quiz-progress-indicator">Question X of Y</p>
+            <div id="quiz-questions-container">
+                <!-- Questions will be rendered here -->
+            </div>
+            <button id="submit-quiz-btn">Submit Quiz</button>
+        </section>
+    </template>
+
+    <template id="quiz-results-template">
+        <section id="quiz-results-page">
+            <h2>Quiz Results</h2>
+            <p id="quiz-score">Your Score: X%</p>
+            <p id="quiz-feedback-message">Feedback message here...</p>
+            <button id="quiz-results-next-action-btn">Next Lesson</button>
+        </section>
+    </template>
+
+    <template id="my-progress-template">
+        <section id="my-progress-page">
+            <h2>My Learning Progress</h2>
+            <h3>In Progress</h3>
+            <div id="my-progress-inprogress-list" class="item-list">
+                <!-- In-progress courses with status -->
+                <p>No courses currently in progress.</p>
+            </div>
+            <h3>Completed</h3>
+            <div id="my-progress-completed-list" class="item-list">
+                <!-- Completed courses with dates -->
+                <p>No courses completed yet.</p>
+            </div>
+        </section>
+    </template>
+
+    <!-- Placeholder for other pages like "Browse Courses", "Profile" -->
+    <template id="courses-template">
+        <section><h2>Browse Courses</h2><p>Course listing will be here.</p></section>
+    </template>
+    <template id="profile-template">
+        <section><h2>User Profile</h2><p>User profile details and settings.</p></section>
+    </template>
+
+
+    <!-- JavaScript files -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui_render.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
