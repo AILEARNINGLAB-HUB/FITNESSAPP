@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Fitness App</h1>
+
+    <div id="user-profile">
+        <h2>Your Fitness Goals</h2>
+        <form id="goal-form">
+            <label for="goal">Select your goal:</label>
+            <select id="goal" name="goal">
+                <option value="lose-weight">Lose Weight</option>
+                <option value="gain-muscle">Gain Muscle</option>
+                <option value="improve-fitness">Improve Fitness</option>
+            </select>
+            <button type="submit">Set Goal</button>
+        </form>
+    </div>
+
+    <div id="workout-plan">
+        <h2>Your Workout Plan</h2>
+        <button id="generate-workout">Generate Workout</button>
+        <div id="workout-output"></div>
+    </div>
+
+    <div id="eating-guide">
+        <h2>Your Eating Guide</h2>
+        <button id="generate-eating-guide">Generate Eating Guide</button>
+        <div id="eating-guide-output"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
